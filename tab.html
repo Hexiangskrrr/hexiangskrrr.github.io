@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tab</title>
+  </head>
+  <body>
+    <video id="video" controls width="640" height="480"></video>
+    <script>
+      const video = document.getElementById("video");
+      const broadcastChannel = new BroadcastChannel("videoSync");
+
+      // Get the index from the URL query string
+      const urlParams = new URLSearchParams(window.location.search);
+      const tabIndex = parseInt(urlParams.get("index"));
+
+      // Listen for messages from the main window
+      window.addEventListener("message", (event) => {
+        if (
+          event.data.action === "loadVideo" &&
+          event.data.index === tabIndex
+        ) {
+          const file = event.data.file;
+          const videoURL = URL.createObjectURL(file);
+
+          // Set the video source and load the video
+          video.src = videoURL;
+          video.load();
+        }
+      });
+
+      // Function to send messages for synchronization
+      function syncVideos(action) {
+        broadcastChannel.postMessage({ action });
+      }
+
+      // Listen for user interactions with the video controls
+      video.addEventListener("play", () => {
+        syncVideos("play");
+      });
+
+      video.addEventListener("pause", () => {
+        syncVideos("pause");
+      });
+
+      // Listen for user interactions with the fullscreen button
+      video.addEventListener("fullscreenchange", () => {
+        const isFullscreen = video === document.fullscreenElement;
+        syncFullscreen(isFullscreen);
+      });
+
+      function syncFullscreen(isFullscreen) {
+        broadcastChannel.postMessage({ action: "fullscreen", isFullscreen });
+      }
+
+      // Listen for synchronization messages
+      broadcastChannel.addEventListener("message", (event) => {
+        if (event.data.action === "play") {
+          video.play();
+        } else if (event.data.action === "pause") {
+          video.pause();
+        } else if (event.data.action === "fullscreen") {
+          // Handle the fullscreen state change here
+          if (event.data.isFullscreen) {
+            // Enter fullscreen
+            if (video.requestFullscreen) {
+              video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) {
+              video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) {
+              video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) {
+              video.msRequestFullscreen();
+            }
+          } else {
+            // Exit fullscreen
+            if (document.exitFullscreen) {
+              document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+              document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+              document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+              document.msExitFullscreen();
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
