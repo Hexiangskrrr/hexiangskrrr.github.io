@@ -1,12 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-HM6X9KXNFT"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-HM6X9KXNFT");
+    </script>
     <meta charset="UTF-8" />
-    <title>Synced Video Playback</title>
+    <title>SyncroTabs</title>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <input type="file" id="videoFiles" multiple accept="video/*" />
-    <button id="openTabs">Open Tabs</button>
-    <script src="index.js"></script>
+    <div>
+      <h1>SyncroTabs</h1>
+    </div>
+    <div class="container" style="background-color: beige">
+      <div class="text-container">
+        <h2>What is SyncroTabs?</h2>
+        <p>SyncroTabs is a video playback synchronizer across tabs.</p>
+        <p>
+          It allows you to play and pause videos in different tabs with a single
+          click.
+        </p>
+      </div>
+      <div class="video-container">
+        <video src="stock.mp4"></video>
+      </div>
+    </div>
+    <div class="container" style="background-color: lightblue">
+      <div class="text-container">
+        <h2>How it works</h2>
+        <ol>
+          <li>
+            Click on the choose files button and select the videos you want to
+            sync
+          </li>
+          <li>Ensure the number of files uploaded is correct</li>
+          <li>Click on the open tabs button</li>
+        </ol>
+        <p>Complete a quick survey to help us improve</p>
+        <a
+          href="https://docs.google.com/forms/d/1_29ysWsUHtm337YgEBm6vFfe59uyxQYydYh7m2MFLqA"
+          >Survey form</a
+        >
+      </div>
+      <div class="function">
+        <input type="file" id="videoFiles" multiple accept="video/*" />
+        <button id="openTabs">Open Tabs</button>
+        <script src="index.js"></script>
+      </div>
+    </div>
+    <div class="container" style="background-color: lightgray">
+      <div class="text-container">
+        <h2>FAQ</h2>
+        <ul>
+          <li>
+            Why is only 1 tab created when I press open tabs => Make sure to
+            enable this website to show pop up (disabled by default)
+          </li>
+          <li>
+            What is the maximum number of videos I can sync? => There is no
+            limit.
+          </li>
+          <li>
+            Are the videos I upload being stored? => No, this website is not
+            connected to any database.
+          </li>
+          <li>
+            I encountered an issue, where can i report it? => You can reach us
+            at
+            <a href="mailto: syncrotabs@gmail.com"> syncrotabs@gmail.com</a> or
+            <a
+              href="https://docs.google.com/forms/d/1jPOIv20iQSNrflubhiifqOvNGnaWIpW_7_km_ljjk7s/"
+              >here</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="about-us">
+      <h2>About Us</h2>
+      <p>
+        You can support us by buying us a coffee at
+        <a href="https://www.buymeacoffee.com/syncrotabs"
+          >https://www.buymeacoffee.com/syncrotabs</a
+        >
+      </p>
+      <p>
+        Provide any feedback or improvements
+        <a
+          href="https://docs.google.com/forms/d/1jPOIv20iQSNrflubhiifqOvNGnaWIpW_7_km_ljjk7s/"
+          >here</a
+        >
+      </p>
+      <p>
+        You can also contact us at
+        <a href="mailto: syncrotabs@gmail.com"> syncrotabs@gmail.com</a>, we
+        usually reply within 24 hours
+      </p>
+    </div>
   </body>
 </html>

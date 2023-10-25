@@ -1,0 +1,52 @@
+body {
+  font-family: sans-serif;
+}
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 1.875em;
+}
+
+p {
+  font-size: 1em;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.text-container {
+  text-align: center;
+  flex: 1;
+  padding: 10px;
+}
+.video-container {
+  flex: 1;
+  padding: 10px;
+}
+video {
+  max-width: 100%;
+  height: auto;
+}
+.function {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+/* Reduce margin and padding for the ordered list and list items */
+.text-container ol {
+  margin: 0;
+  padding: 0;
+}
+.text-container li {
+  margin: 5px 0; /* Adjust margin to control spacing */
+  padding-left: 20px; /* Add some left padding for space between number and content */
+  list-style-position: inside; /* Place the number inside the content */
+  text-align: center;
+}
+.about-us {
+  text-align: center;
+}
